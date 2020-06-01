@@ -1,0 +1,24 @@
+{
+  "name": "custom-css",
+  "title": "Custom Css",
+  "description": "Add custom css to your world",
+  "version": "0.1.0",
+  "minimumCoreVersion": "0.6.0",
+  "author": "Cody Swendrowski <cody@swendrowski.us>",
+  "esmodules": [
+    "./custom-css.js"
+  ],
+  "styles": [
+    "./custom-css.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "url": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS",
+  "manifest": "https://raw.githubusercontent.com/cswendrowski/FoundryVTT-Custom-CSS/master/module.json",
+  "download": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/archive/master.zip"
+}
