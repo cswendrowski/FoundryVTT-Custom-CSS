@@ -2,8 +2,9 @@
   "name": "custom-css",
   "title": "Custom Css",
   "description": "Add custom css to your world",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "minimumCoreVersion": "0.6.0",
+  "compatibleCoreVersion": "0.6.0",
   "author": "Cody Swendrowski <cody@swendrowski.us>",
   "esmodules": [
     "./custom-css.js"

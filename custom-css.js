@@ -24,32 +24,12 @@ Hooks.once('ready', async function() {
 
      var sheet = window.document.styleSheets[0];
 
-     if (Settings.getRule1() != "") {
-      sheet.insertRule(Settings.getRule1(), sheet.cssRules.length);
-     }
-     if (Settings.getRule2() != "") {
-      sheet.insertRule(Settings.getRule2(), sheet.cssRules.length);
-     }
-     if (Settings.getRule3() != "") {
-      sheet.insertRule(Settings.getRule3(), sheet.cssRules.length);
-     }
-     if (Settings.getRule4() != "") {
-      sheet.insertRule(Settings.getRule4(), sheet.cssRules.length);
-     }
-     if (Settings.getRule5() != "") {
-      sheet.insertRule(Settings.getRule5(), sheet.cssRules.length);
-     }
-     if (Settings.getRule6() != "") {
-      sheet.insertRule(Settings.getRule6(), sheet.cssRules.length);
-     }
-     if (Settings.getRule7() != "") {
-      sheet.insertRule(Settings.getRule7(), sheet.cssRules.length);
-     }
-     if (Settings.getRule8() != "") {
-      sheet.insertRule(Settings.getRule8(), sheet.cssRules.length);
-     }
-     if (Settings.getRule9() != "") {
-      sheet.insertRule(Settings.getRule9(), sheet.cssRules.length);
+     for (var x = 1; x <= Settings.getMaxRules(); x++) {
+      var rule = Settings.getRule(x);
+      if (rule != "") {
+        console.log("CustomCSS | Inserting rule " + rule);
+        sheet.insertRule(rule, sheet.cssRules.length);
+       }
      }
      
      console.log(sheet);
