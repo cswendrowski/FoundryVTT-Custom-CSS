@@ -1,0 +1,38 @@
+.customCssSettings .fas {
+    flex: 0;
+    align-self: center;
+    padding: 5px;
+}
+
+.customCssSettings .fa-trash:hover {
+    color: red;
+}
+
+.customCssSettings h2 {
+    padding-top: 20px;
+}
+
+.customCssSettings h2:first-of-type {
+    padding-top: 0;
+}
+
+.rule {
+    background-color: whitesmoke !important;
+}
+
+/* 
+.customCssSettings .base {
+    background-color: #e6e6e6;
+}
+
+.customCssSettings .folder {
+    background-color: #cccccc;
+}
+
+.customCssSettings .list-group-item {
+    background-color: aliceblue;
+}
+
+.customCssSettings .list-group {
+    padding: .75rem 1.25rem;
+} */

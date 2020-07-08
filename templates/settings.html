@@ -1,17 +1,31 @@
-<form autocomplete="off" onsubmit="event.preventDefault()">
-    {{#each rules}}
-    <div class="form-group">
-        <label>Rule {{this.index}}</label>
-        <input name="rule{{this.index}}" type="text" value="{{this.value}}" />
+<form autocomplete="off" class="customCssSettings" onsubmit="event.preventDefault()">
+    <div>
+        <div class="list-group base" id="customcssrules">
+            {{#each folders}}
+            <h2 class="form-group list-group-item" data-id="folder{{this.index}}">
+                <i class="fas fa-arrows-alt handle"></i>
+                <input name="folder{{this.index}}" type="text" value="{{this.value}}" />
+                <i class="fas fa-trash folder-delete" data-folderid="{{this.index}}" style="font-size: 16px;"></i>
+            </h2>
+            {{/each}}
+
+            {{#each rules}}
+            <div class="form-group list-group-item" data-id="rule{{this.index}}">
+                <i class="fas fa-arrows-alt handle"></i>
+                <!-- <label>Rule {{this.index}}</label> -->
+                <input name="rule{{this.index}}" class="rule" type="text" value="{{this.value}}" />
+                <i class="fas fa-trash rule-delete" data-ruleid="{{this.index}}"></i>
+            </div>
+            {{/each}}
+        </div>
     </div>
-    {{/each}}
 
     <div style="display: flex; padding-top: 10px;">
-        <button type="submit" name="remove" value="remove" style="width: 50%;" {{#if cantRemove}}disabled{{/if}}>
-            <i class="fas fa-minus"></i> Remove Row
+        <button type="submit" name="addRule" value="addRule" style="width: 50%;">
+            <i class="fas fa-plus"></i> Add Rule
         </button>
-        <button type="submit" name="add" value="add" style="width: 50%;">
-            <i class="fas fa-plus"></i> Add Row
+        <button type="submit" name="addFolder" value="addFolder" style="width: 50%;">
+            <i class="fas fa-plus"></i> Add Divider
         </button>
     </div>
 

@@ -2,12 +2,15 @@
   "name": "custom-css",
   "title": "Custom Css",
   "description": "Add custom css to your world",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minimumCoreVersion": "0.6.0",
   "compatibleCoreVersion": "0.6.0",
   "author": "Cody Swendrowski <cody@swendrowski.us>",
   "esmodules": [
     "./custom-css.js"
+  ],
+  "scripts": [
+    "scripts/lib/Sortable.js"
   ],
   "styles": [
     "./custom-css.css"

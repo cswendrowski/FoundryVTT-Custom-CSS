@@ -26,8 +26,8 @@ Hooks.once('ready', async function() {
 
      for (var x = 1; x <= Settings.getMaxRules(); x++) {
       var rule = Settings.getRule(x);
-      if (rule != "") {
-        console.log("CustomCSS | Inserting rule " + rule);
+      if (rule != "" && rule != "<DELETED>") {
+        //console.log("CustomCSS | Inserting rule " + rule);
         sheet.insertRule(rule, sheet.cssRules.length);
        }
      }

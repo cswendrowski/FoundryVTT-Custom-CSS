@@ -14,11 +14,13 @@ export class Settings {
     }
 
     static setRule(index, val) {
+        if (val == undefined) return;
         game.settings.set(mod, 'rule' + index, val).then(function() {
             var sheet = window.document.styleSheets[0];
 
             for (var x = 1; x <= Settings.getMaxRules(); x++) {
              var rule = Settings.getRule(x);
+             if (rule == "<DELETED>") continue;
              if (rule != "") {
                console.log("CustomCSS | Inserting rule " + rule);
                sheet.insertRule(rule, sheet.cssRules.length);
@@ -26,7 +28,18 @@ export class Settings {
             }
             
             ui.players.render();
-        });;
+        });
+    }
+
+    static getFolder(index) {
+        return game.settings.get(mod, 'folder' + index);
+    }
+
+    static setFolder(index, val) {
+        if (val == undefined) return;
+        game.settings.set(mod, 'folder' + index, val).then(function() {            
+            ui.players.render();
+        });
     }
 
     static getMaxRules() {
@@ -35,6 +48,22 @@ export class Settings {
 
     static setMaxRules(val) {
         game.settings.set(mod, 'numberOfRules', val);
+    }
+
+    static getMaxFolders() {
+        return game.settings.get(mod, 'numberOfFolders');
+    }
+
+    static setMaxFolders(val) {
+        game.settings.set(mod, 'numberOfFolders', val);
+    }
+
+    static getOrder() {
+        return game.settings.get(mod, 'order');
+    }
+
+    static setOrder(val) {
+        game.settings.set(mod, 'order', val);
     }
 
     static addMaxRule() {
@@ -57,6 +86,26 @@ export class Settings {
         game.settings.set(mod, 'numberOfRules', maxRules - 1);
     }
 
+    static addMaxFolder() {
+        var newMax = this.getMaxFolders() + 1;
+        game.settings.register(mod, 'folder' + newMax, {
+            scope: 'world',
+            config: false,
+            type: String,
+            default: ""
+        });
+        game.settings.set(mod, 'numberOfFolders', newMax);
+    }
+
+    static removeMaxFolder() {
+        var max = this.getMaxFolders();
+        if (max == 0) {
+            console.log("CustomCSS | Cannot have less than 0 folders");
+            return;
+        }
+        game.settings.set(mod, 'numberOfFolders', max - 1);
+    }
+
     //#endregion CSS Getters
 
     /**
@@ -71,6 +120,20 @@ export class Settings {
             default: 3
         })
 
+        game.settings.register(mod, "numberOfFolders", {
+            scope: 'world',
+            config: false,
+            type: Number,
+            default: 0
+        })
+
+        game.settings.register(mod, "order", {
+            scope: 'world',
+            config: false,
+            type: Object,
+            default: {}
+        })
+
         game.settings.registerMenu(mod, 'settingsMenu', {
             name: 'Custom CSS Rules',
             label: 'Custom CSS Rules',
@@ -81,6 +144,15 @@ export class Settings {
 
         for (var x = 1; x <= Settings.getMaxRules(); x++) {
             game.settings.register(mod, 'rule' + x, {
+                scope: 'world',
+                config: false,
+                type: String,
+                default: ""
+            });
+        }
+
+        for (var x = 1; x <= Settings.getMaxFolders(); x++) {
+            game.settings.register(mod, 'folder' + x, {
                 scope: 'world',
                 config: false,
                 type: String,
