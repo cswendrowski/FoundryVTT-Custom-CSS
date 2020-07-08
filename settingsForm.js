@@ -95,7 +95,12 @@ export class SettingsForm extends FormApplication {
                  */
                 get: function (sortable) {
                     var order = Settings.getOrder();
-                    return order ? order.split('|') : [];
+                    try {
+                        return order ? order.split('|') : [];
+                    }
+                    catch {
+                        return [];
+                    }
                 },
         
                 /**
