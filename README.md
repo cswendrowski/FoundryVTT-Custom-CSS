@@ -18,3 +18,5 @@ When adding a lot of modules, every now and then they don't quite agree with eac
 ### v1.1.0
 
 Added the ability to organize Rules. This is *not* folder functionality!
+
+![](./reordering.gif)
