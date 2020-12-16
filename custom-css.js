@@ -22,7 +22,20 @@ Hooks.once('init', async function() {
     RegisterConfigurationOptions();
     Settings.registerSettings();
 
-     var sheet = window.document.styleSheets[0];
+    const style = document.createElement("style");
+    style.id = "CustomCSS";
+    document.querySelector("head").appendChild(style);
+
+    let css = "";
+    for (var x = 1; x <= Settings.getMaxRules(); x++) {
+      let rule = Settings.getRule(x);
+      if (rule == "" || rule == "<DELETED>") continue;
+      css += rule;
+    }
+
+    style.innerHTML = css;
+
+/*     var sheet = window.document.styleSheets[0];
 
      for (var x = 1; x <= Settings.getMaxRules(); x++) {
       var rule = Settings.getRule(x);
@@ -31,8 +44,8 @@ Hooks.once('init', async function() {
         sheet.insertRule(rule, sheet.cssRules.length);
        }
      }
-     
-     console.log(sheet);
+  */   
+     console.log(css);
   };
 
 
