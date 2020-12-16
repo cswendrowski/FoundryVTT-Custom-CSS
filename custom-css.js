@@ -29,7 +29,7 @@ class CustomCSS {
 
     createStyleElement() {
         this._style = document.createElement("style");
-        this._style.id = "CustomCSS";
+        this._style.id = "custom-css";
         document.querySelector("head").appendChild(this._style);
     }
 
