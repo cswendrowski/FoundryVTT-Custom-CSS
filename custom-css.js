@@ -2,7 +2,7 @@
 
 import { Settings } from "./settings.js";
 
-Hooks.once('ready', async function() {
+Hooks.once('init', async function() {
   const version = 1.0;  //Current Version
 
   //Bootstrap
