@@ -13,21 +13,12 @@ export class Settings {
         return game.settings.get(mod, 'rule' + index);
     }
 
-    static setRule(index, val) {
-        if (val == undefined) return;
-        game.settings.set(mod, 'rule' + index, val).then(function() {
-            const style = document.getElementById("CustomCSS");
+    static async setRule(index, val) {
+        if (val == undefined || !window.CustomCss) return;
 
-            let css = "";
-            for(let rule of Settings.rules()) {
-                if (rule == "" || rule == "<DELETED>") continue;
-                css += rule;
-            }
-
-            style.innerHTML = css;
-            
-            ui.players.render();
-        });
+        await game.settings.set(mod, 'rule' + index, val);
+        
+        window.CustomCss.applyStyles();
     }
 
     static *rules() {
