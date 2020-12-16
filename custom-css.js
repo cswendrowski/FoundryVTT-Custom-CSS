@@ -1,5 +1,3 @@
-(() => { })();
-
 import { Settings } from "./settings.js";
 
 class CustomCSS {
