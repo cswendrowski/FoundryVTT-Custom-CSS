@@ -16,16 +16,16 @@ export class Settings {
     static setRule(index, val) {
         if (val == undefined) return;
         game.settings.set(mod, 'rule' + index, val).then(function() {
-            var sheet = window.document.styleSheets[0];
+            const style = document.getElementById("CustomCSS");
 
+            let css = "";
             for (var x = 1; x <= Settings.getMaxRules(); x++) {
-             var rule = Settings.getRule(x);
-             if (rule == "<DELETED>") continue;
-             if (rule != "") {
-               console.log("CustomCSS | Inserting rule " + rule);
-               sheet.insertRule(rule, sheet.cssRules.length);
-              }
+                let rule = Settings.getRule(x);
+                if (rule == "" || rule == "<DELETED>") continue;
+                css += rule;
             }
+
+            style.innerHTML = css;
             
             ui.players.render();
         });
