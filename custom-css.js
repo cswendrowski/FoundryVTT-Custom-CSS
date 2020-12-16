@@ -2,35 +2,47 @@
 
 import { Settings } from "./settings.js";
 
-
-Hooks.once('init', async function() {
-    const version = 1.0;  //Current Version
-
-    //Bootstrap
-    if (!window.CustomCss) {
-        window.CustomCss = { loaded: 0 };
-        window.CustomCss.setup = () => console.error('CustomCss | Failed to setup CustomCss');
-        $(() => window.CustomCss.setup());
+class CustomCSS {
+    static get version() { return 1.0; } //Current Version
+    
+    static onInit() {
+        window.CustomCss = new CustomCSS();
+    }
+    
+    constructor() {
+        this.setup();
     }
 
-    window.CustomCss.loaded = version;
+    get style() { 
+        if (!this._style) this.createStyleElement();
+        return this._style; 
+    }
+    get css() { return this.style.innerHTML; }
+    set css(css) { this.style.innerHTML = css; } 
+    
+    setup() {
+        console.log(`CustomCss | Initializing v` + this.constructor.version);
 
-    window.CustomCss.setup = () => {
-        console.log(`CustomCss | Initializing v` + version);
         Settings.registerSettings();
+        this.createStyleElement();
+        this.applyStyles();
+        console.log(css);
+    }
 
-        const style = document.createElement("style");
-        style.id = "CustomCSS";
-        document.querySelector("head").appendChild(style);
+    createStyleElement() {
+        this._style = document.createElement("style");
+        this._style.id = "CustomCSS";
+        document.querySelector("head").appendChild(this._style);
+    }
 
+    applyStyles() {
         let css = "";
         for(let rule of Settings.rules()) {
             if (rule == "" || rule == "<DELETED>") continue;
             css += rule;
         }
+        this.css = css;
+    }
+}
 
-        style.innerHTML = css;
-
-         console.log(css);
-    };
-});
+Hooks.once('init', CustomCSS.onInit);
