@@ -24,7 +24,7 @@ class CustomCSS {
         Settings.registerSettings();
         this.createStyleElement();
         this.applyStyles();
-        console.log(css);
+        console.log(this.css);
     }
 
     createStyleElement() {
