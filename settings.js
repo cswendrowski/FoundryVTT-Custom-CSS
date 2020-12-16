@@ -19,8 +19,7 @@ export class Settings {
             const style = document.getElementById("CustomCSS");
 
             let css = "";
-            for (var x = 1; x <= Settings.getMaxRules(); x++) {
-                let rule = Settings.getRule(x);
+            for(let rule of Settings.rules()) {
                 if (rule == "" || rule == "<DELETED>") continue;
                 css += rule;
             }
@@ -29,6 +28,12 @@ export class Settings {
             
             ui.players.render();
         });
+    }
+
+    static *rules() {
+        for (var x = 1; x <= Settings.getMaxRules(); x++) {
+            yield Settings.getRule(x);
+        }
     }
 
     static getFolder(index) {

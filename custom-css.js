@@ -27,12 +27,16 @@ Hooks.once('init', async function() {
     document.querySelector("head").appendChild(style);
 
     let css = "";
-    for (var x = 1; x <= Settings.getMaxRules(); x++) {
+    for(let rule of Settings.rules()) {
+      if (rule == "" || rule == "<DELETED>") continue;
+      css += rule;
+    }
+/*    for (var x = 1; x <= Settings.getMaxRules(); x++) {
       let rule = Settings.getRule(x);
       if (rule == "" || rule == "<DELETED>") continue;
       css += rule;
     }
-
+*/
     style.innerHTML = css;
 
 /*     var sheet = window.document.styleSheets[0];
