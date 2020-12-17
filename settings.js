@@ -19,6 +19,27 @@ export class Settings {
         window.CustomCss.applyStyles();
     }
 
+    /**
+     * Registers all of the necessary game settings for the module
+     */
+    static registerSettings() {
+        game.settings.register(mod, "stylesheet", {
+            scopr: "world",
+            config: false,
+            type: String,
+            default: "/* Custom CSS */"
+        });
+
+        if (this.hasOldSettings) {
+            game.settings.register(mod, "numberOfRules", {
+                scope: 'world',
+                config: false,
+                type: Number,
+                default: 0
+            })
+        }
+    }
+
    /**********************************************************************************
     *
     * Migration and legacy methods
@@ -149,65 +170,5 @@ export class Settings {
 
     //#endregion CSS Getters
 
-    /**
-     * Registers all of the necessary game settings for the module
-     */
-    static registerSettings() {
-        game.settings.register(mod, "stylesheet", {
-            scopr: "world",
-            config: false,
-            type: String,
-            default: "/* Custom CSS */"
-        });
 
-
-        if (this.hasOldSettings) {
-            game.settings.register(mod, "numberOfRules", {
-                scope: 'world',
-                config: false,
-                type: Number,
-                default: 0
-            })
-        }
-
-        game.settings.register(mod, "numberOfFolders", {
-            scope: 'world',
-            config: false,
-            type: Number,
-            default: 0
-        })
-
-        game.settings.register(mod, "order", {
-            scope: 'world',
-            config: false,
-            type: Object,
-            default: {}
-        })
-
-        game.settings.registerMenu(mod, 'settingsMenu', {
-            name: 'Custom CSS Rules',
-            label: 'Custom CSS Rules',
-            icon: 'fas fa-wrench',
-            type: SettingsForm,
-            restricted: true
-        });
-
-        for (var x = 1; x <= Settings.getMaxRules(); x++) {
-            game.settings.register(mod, 'rule' + x, {
-                scope: 'world',
-                config: false,
-                type: String,
-                default: ""
-            });
-        }
-
-        for (var x = 1; x <= Settings.getMaxFolders(); x++) {
-            game.settings.register(mod, 'folder' + x, {
-                scope: 'world',
-                config: false,
-                type: String,
-                default: ""
-            });
-        }
-    }
 }
