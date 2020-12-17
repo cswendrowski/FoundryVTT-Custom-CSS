@@ -1,14 +1,20 @@
 import { Settings } from './settings.js';
 
+/**
+ * A form for inputting Custom CSS settings.
+ *
+ * @export
+ * @class SettingsForm
+ * @extends {FormApplication}
+ */
 export class SettingsForm extends FormApplication {
-
-    constructor(object, options = {}) {
-        super(object, options);
-    }
-
     /**
-    * Default Options for this FormApplication
-    */
+     * Default Options for this FormApplication
+     *
+     * @readonly
+     * @static
+     * @memberof SettingsForm
+     */
     static get defaultOptions() {
         var me = this;
         return mergeObject(super.defaultOptions, {
@@ -21,16 +27,24 @@ export class SettingsForm extends FormApplication {
         });
     }
 
+    /**
+     * Construct an object of data to be passed to this froms HTML template.
+     *
+     * @return {object} The data being supplied to the template.
+     * @memberof SettingsForm
+     */
     getData() {
         return { stylesheet: Settings.getStylesheet() };
     }
 
-    /** 
+    /**
      * Executes on form submission.
-     * @param {Object} e - the form submission event
-     * @param {Object} d - the form data
+     *
+     * @param {Event} event - the form submission event
+     * @param {object} data - the form data
+     * @memberof SettingsForm
      */
-    async _updateObject(e, d) {
-        Settings.updateStylesheet(d["stylesheet"]);
+    async _updateObject(event, data) {
+        await Settings.updateStylesheet(data["stylesheet"]);
     }
 }
