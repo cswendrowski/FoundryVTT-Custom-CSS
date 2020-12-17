@@ -59,9 +59,9 @@ export class Settings {
         });
 
         game.settings.registerMenu(mod, 'settingsMenu', {
-            name: 'Custom CSS Rules',
-            label: 'Custom CSS Rules',
-            icon: 'fas fa-wrench',
+            name: game.i18n.localize("CCSS.settings.settingsMenu.name"),
+            label: game.i18n.localize("CCSS.settings.settingsMenu.label"),
+            icon: "fas fa-wrench",
             type: SettingsForm,
             restricted: true
         });
@@ -69,7 +69,7 @@ export class Settings {
         // For migration
         if (this.hasOldSettings) {
             game.settings.register(mod, "numberOfRules", {
-                scope: 'world',
+                scope: "world",
                 config: false,
                 type: Number,
                 default: 0

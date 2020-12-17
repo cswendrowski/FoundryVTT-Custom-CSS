@@ -1,8 +1,12 @@
 {
     "CCSS": {
-        "SETTINGS": {
+        "settings": {
             "CustomCss":"Custom CSS",
-            "CustomCssHint": "Make sure you validate your CSS and use !important"
+            "CustomCssHint": "Make sure you validate your CSS and use !important",
+            "settingsMenu": {
+                "name": "Custom CSS Rules",
+                "label": "Custom CSS Rules"
+            }
         },
         "migration": {
             "startMessage": "Migrating Custom CSS data...",
