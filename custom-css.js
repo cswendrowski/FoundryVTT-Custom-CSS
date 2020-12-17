@@ -17,6 +17,7 @@ class CustomCSS {
      */
     static onInit() {
         window.CustomCss = new CustomCSS();
+        
     }
     
     /**
@@ -25,6 +26,7 @@ class CustomCSS {
      */
     constructor() {
         this.setup();
+        
     }
 
     /**
@@ -50,7 +52,7 @@ class CustomCSS {
     /**
      * Prepare the class for use.
      *
-     * Register settigns, initiate migration if needed, 
+     * Register settigns, initiate migration if needed, set up socket
      * add the <style> element to the page, and inject styles.
      *
      * @memberof CustomCSS
@@ -58,6 +60,8 @@ class CustomCSS {
     async setup() {
         Settings.registerSettings();
         if (Settings.hasOldSettings) await Settings.migrate();
+
+        this.openSocket();
 
         this.createStyleElement();
         this.applyStyles();
@@ -84,6 +88,17 @@ class CustomCSS {
      */
     applyStyles() {
         this.css = Settings.getStylesheet();
+    }
+
+    /**
+     * Prepares for socket connections.
+     *
+     * @memberof CustomCSS
+     */
+    openSocket() {
+        Hooks.once("ready", () => 
+            game.socket.on("module.custom-css", this.applyStyles.bind(this))
+        );
     }
 }
 

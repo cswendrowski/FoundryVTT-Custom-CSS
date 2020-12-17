@@ -42,6 +42,7 @@ export class Settings {
     static async updateStylesheet(css) {
         await this.setStylesheet(css);
         window.CustomCss.applyStyles();
+        game.socket.emit("module.custom-css");
     }
 
     /**
