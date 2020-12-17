@@ -18,10 +18,12 @@ class CustomCSS {
     get css() { return this.style.innerHTML; }
     set css(css) { this.style.innerHTML = css; } 
     
-    setup() {
+    async setup() {
         console.log(`CustomCss | Initializing v` + this.constructor.version);
-
+        
         Settings.registerSettings();
+        if (Settings.hasOldSettings) await Settings.migrate();
+
         this.createStyleElement();
         this.applyStyles();
         console.log(this.css);
