@@ -19,6 +19,39 @@ export class Settings {
         window.CustomCss.applyStyles();
     }
 
+   /**********************************************************************************
+    *
+    * Migration and legacy methods
+    *
+    * The following methods exist to handle old Custom CSS data and perform migration.
+    *
+    *********************************************************************************/
+
+    static get hasOldSettings() { 
+        return this.getMaxRules() > 0; 
+    }
+
+    static async migrate() {
+        console.log(game.i18n.localize("CCSS.migration.startMessage"));
+        Hooks.once("ready", () => ui.notifications.notify(game.i18n.localize("CCSS.migration.uiMessage")));
+
+        let oldCSS = this.compileOldRules();
+        await this.setStylesheet(this.getStylesheet() + oldCSS);
+
+        await game.settings.set(mod, "numberOfRules", 0);
+
+        console.log(game.i18n.localize("CCSS.migration.endMessage"));
+    }
+
+    static compileOldRules() {
+        let css = "\n";
+        for(let rule of Settings.rules()) {
+            if (rule == "" || rule == "<DELETED>") continue;
+            css += rule + "\n";
+        }
+        return css;
+    }
+
     //#region getters and setters
     static getRule(index) {
         const rule = game.settings.storage.get("world").get(`${mod}.rule${index}`);
