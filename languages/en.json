@@ -1,4 +1,13 @@
 {
-    "CCSS.SETTINGS.CustomCss": "Custom CSS",
-    "CCSS.SETTINGS.CustomCssHint": "Make sure you validate your CSS and use !important"
+    "CCSS": {
+        "SETTINGS": {
+            "CustomCss":"Custom CSS",
+            "CustomCssHint": "Make sure you validate your CSS and use !important"
+        },
+        "migration": {
+            "startMessage": "Migrating Custom CSS data...",
+            "endMessage": "...Custom CSS migration complete.",
+            "uiMessage": "Custom CSS data Migrated. Check module settings."
+        }
+    }
 }
