@@ -108,6 +108,13 @@ export class Settings {
      * Registers all of the necessary game settings for the module
      */
     static registerSettings() {
+        game.settings.register(mod, "stylesheet", {
+            scopr: "world",
+            config: false,
+            type: String,
+            default: "/* Custom CSS */"
+        });
+
 
         game.settings.register(mod, "numberOfRules", {
             scope: 'world',
