@@ -22,27 +22,7 @@ export class SettingsForm extends FormApplication {
     }
 
     getData() {
-        var rulesArray = [];
-        var foldersArray = [];
-
-        for (var x = 1; x <= Settings.getMaxRules(); x++) {
-            rulesArray.push(Settings.getRule(x));
-        }
-
-        for (var x = 1; x <= Settings.getMaxFolders(); x++) {
-            foldersArray.push(Settings.getFolder(x));
-        }
-
-        const data = {
-            stylesheet: Settings.getStylesheet(),
-            rules: this.getIndexValueList(rulesArray),
-            folders: this.getIndexValueList(foldersArray),
-            cantRemove: Settings.getMaxRules() == 0
-        };
-
-        console.log(data);
-
-        return data;
+        return { stylesheet: Settings.getStylesheet() };
     }
 
     /** 
