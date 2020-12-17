@@ -31,32 +31,6 @@ export class SettingsForm extends FormApplication {
      * @param {Object} d - the form data
      */
     async _updateObject(e, d) {
-        var buttonPressed = $(document.activeElement).val();
-
-        console.log(buttonPressed);
-
-        if (buttonPressed === "addRule") {
-            Settings.addMaxRule();
-        }
-        else if (buttonPressed === "removeRule") {
-            Settings.removeMaxRule();
-        }
-        else if (buttonPressed === "addFolder") {
-            Settings.addMaxFolder();
-        }
-
-        for (var x = 1; x <= Settings.getMaxRules(); x++) {
-            var toUpdate = d["rule" + x];
-            console.log("CustomCSS | Adding Rule " + toUpdate);
-            Settings.setRule(x, toUpdate);
-        }
-
-        for (var x = 1; x <= Settings.getMaxFolders(); x++) {
-            var toUpdate = d["folder" + x];
-            console.log("CustomCSS | Adding Folder " + toUpdate);
-            Settings.setFolder(x, toUpdate);
-        }
-        
         Settings.updateStylesheet(d["stylesheet"]);
     }
 
