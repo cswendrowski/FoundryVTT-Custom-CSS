@@ -21,7 +21,8 @@ export class Settings {
 
     //#region getters and setters
     static getRule(index) {
-        return game.settings.get(mod, 'rule' + index);
+        const rule = game.settings.storage.get("world").get(`${mod}.rule${index}`);
+        return rule.substring(1, rule.length - 1);
     }
 
     static async setRule(index, val) {
@@ -50,7 +51,7 @@ export class Settings {
     }
 
     static getMaxRules() {
-        return game.settings.get(mod, 'numberOfRules');
+        return Number(game.settings.storage.get("world").get(`${mod}.numberOfRules`));
     }
 
     static setMaxRules(val) {
