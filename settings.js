@@ -7,6 +7,17 @@ const mod = 'custom-css';
  * Provides functionality for interaction with module settings
  */
 export class Settings {
+    static getStylesheet() {
+        return game.settings.get(mod, "stylesheet");
+    }
+    static async setStylesheet(css) {
+        return game.settings.set(mod, "stylesheet", css);
+    }
+
+    static async updateStylesheet(css) {
+        await this.setStylesheet(css);
+        window.CustomCss.applyStyles();
+    }
 
     //#region getters and setters
     static getRule(index) {
