@@ -23,7 +23,9 @@ export class SettingsForm extends FormApplication {
             template: "./modules/custom-css/templates/settings.html",
             classes: ["sheet"],
             width: 500,
-            closeOnSubmit: true
+            height: 500,
+            closeOnSubmit: false,
+            submitOnClose: true
         });
     }
 
