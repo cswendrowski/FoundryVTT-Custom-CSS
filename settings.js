@@ -161,12 +161,14 @@ export class Settings {
         });
 
 
-        game.settings.register(mod, "numberOfRules", {
-            scope: 'world',
-            config: false,
-            type: Number,
-            default: 3
-        })
+        if (this.hasOldSettings) {
+            game.settings.register(mod, "numberOfRules", {
+                scope: 'world',
+                config: false,
+                type: Number,
+                default: 0
+            })
+        }
 
         game.settings.register(mod, "numberOfFolders", {
             scope: 'world',
