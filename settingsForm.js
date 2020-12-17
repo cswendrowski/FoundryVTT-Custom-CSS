@@ -22,7 +22,6 @@ export class SettingsForm extends FormApplication {
     }
 
     getData() {
-
         var rulesArray = [];
         var foldersArray = [];
 
@@ -35,6 +34,7 @@ export class SettingsForm extends FormApplication {
         }
 
         const data = {
+            stylesheet: Settings.getStylesheet(),
             rules: this.getIndexValueList(rulesArray),
             folders: this.getIndexValueList(foldersArray),
             cantRemove: Settings.getMaxRules() == 0
@@ -76,6 +76,8 @@ export class SettingsForm extends FormApplication {
             console.log("CustomCSS | Adding Folder " + toUpdate);
             Settings.setFolder(x, toUpdate);
         }
+        
+        Settings.updateStylesheet(d["stylesheet"]);
     }
 
     activateListeners(html) {

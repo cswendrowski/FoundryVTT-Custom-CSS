@@ -1,5 +1,10 @@
 <form autocomplete="off" class="customCssSettings" onsubmit="event.preventDefault()">
     <div>
+        <section class="stylesheet-editor">
+            <textarea name="stylesheet" class="stylesheet">
+            {{~" "}}{{{stylesheet}}}{{" "~}}
+            </textarea>
+        </section>
         <div class="list-group base" id="customcssrules">
             {{#each folders}}
             <h2 class="form-group list-group-item" data-id="folder{{this.index}}">
