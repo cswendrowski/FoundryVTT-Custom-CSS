@@ -34,13 +34,7 @@ class CustomCSS {
     }
 
     applyStyles() {
-        let css = Settings.getStylesheet();
-
-        for(let rule of Settings.rules()) {
-            if (rule == "" || rule == "<DELETED>") continue;
-            css += rule;
-        }
-        this.css = css;
+        this.css = Settings.getStylesheet();
     }
 }
 
