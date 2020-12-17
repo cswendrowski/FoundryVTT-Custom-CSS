@@ -1,3 +1,13 @@
+.customCssSettings {
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+}
+.stylesheet-editor {
+    flex-grow: 1;
+    margin-bottom: 8px;
+}
 .stylesheet {
     font-family: 'Courier New', Courier, monospace;
+    height: 100%;
 }
