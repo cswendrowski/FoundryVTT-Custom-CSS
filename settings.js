@@ -30,6 +30,15 @@ export class Settings {
             default: "/* Custom CSS */"
         });
 
+        game.settings.registerMenu(mod, 'settingsMenu', {
+            name: 'Custom CSS Rules',
+            label: 'Custom CSS Rules',
+            icon: 'fas fa-wrench',
+            type: SettingsForm,
+            restricted: true
+        });
+
+        // For migration
         if (this.hasOldSettings) {
             game.settings.register(mod, "numberOfRules", {
                 scope: 'world',
