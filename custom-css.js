@@ -1,8 +1,11 @@
 import { Settings } from "./settings.js";
 
-class CustomCSS {
-    static get version() { return 1.0; } //Current Version
-    
+/**
+ * A class that handles the primary functions of the Custom CSS module
+ *
+ * @class CustomCSS
+ */
+class CustomCSS {  
     static onInit() {
         window.CustomCss = new CustomCSS();
     }
@@ -19,8 +22,6 @@ class CustomCSS {
     set css(css) { this.style.innerHTML = css; } 
     
     async setup() {
-        console.log(`CustomCss | Initializing v` + this.constructor.version);
-        
         Settings.registerSettings();
         if (Settings.hasOldSettings) await Settings.migrate();
 
