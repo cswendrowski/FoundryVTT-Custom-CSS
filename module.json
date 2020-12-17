@@ -21,9 +21,6 @@
     "esmodules": [
         "./custom-css.js"
     ],
-    "scripts": [
-        "scripts/lib/Sortable.js"
-    ],
     "styles": [
         "./custom-css.css"
     ],
