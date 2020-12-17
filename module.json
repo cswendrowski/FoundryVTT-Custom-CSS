@@ -34,5 +34,14 @@
     ],
     "manifest": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases/latest/download/module.json",
 	"url": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS",
-	"download": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases/latest/download/artbutton.zip"
+	"download": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases/latest/download/artbutton.zip",
+    "readme": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/blob/master/readme.md",
+	"bugs": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/issues",
+	"changelog": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases",
+	"media": [
+		{
+			"type": "icon",
+			"url": "https://avatars2.githubusercontent.com/u/1721836"
+		}
+	]
 }
