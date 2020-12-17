@@ -34,7 +34,8 @@ class CustomCSS {
     }
 
     applyStyles() {
-        let css = "";
+        let css = Settings.getStylesheet();
+
         for(let rule of Settings.rules()) {
             if (rule == "" || rule == "<DELETED>") continue;
             css += rule;
