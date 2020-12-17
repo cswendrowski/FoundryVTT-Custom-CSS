@@ -52,7 +52,7 @@ export class Settings {
      */
     static registerSettings() {
         game.settings.register(mod, "stylesheet", {
-            scopr: "world",
+            scope: "world",
             config: false,
             type: String,
             default: "/* Custom CSS */"
