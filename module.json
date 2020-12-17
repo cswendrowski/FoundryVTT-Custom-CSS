@@ -21,6 +21,7 @@
     "esmodules": [
         "./custom-css.js"
     ],
+    "socket": "true",
     "styles": [
         "./custom-css.css"
     ],
