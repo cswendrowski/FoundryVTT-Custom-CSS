@@ -20,6 +20,10 @@
     background-color: whitesmoke !important;
 }
 
+.stylesheet {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 /* 
 .customCssSettings .base {
     background-color: #e6e6e6;
