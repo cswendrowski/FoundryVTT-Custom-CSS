@@ -1,11 +1,23 @@
 .customCssSettings {
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
+    height: 100%;
 }
 .stylesheet-editor {
     flex-grow: 1;
     margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.stylesheet-editor .CodeMirror {
+    	height: 100%;
+    	cursor: text;
+    	background: #ffffff33;
+    	box-shadow: 0 0 12px -6px #00000070 inset;
+}
+.stylesheet-editor .CodeMirror-gutters {
+    background-color: #c5c5c547;
+    box-shadow: 0 0 5px 0px #0000005c;
 }
 .stylesheet {
     font-family: 'Courier New', Courier, monospace;
