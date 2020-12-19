@@ -18,7 +18,7 @@ export class SettingsForm extends FormApplication {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             id: "customcss-settings-form",
-            title: game.i18n.localize("CCSS.settings.settingsForm.title"),
+            title: game.i18n.localize("CCSS.settings.settingsMenu.title"),
             template: "./modules/custom-css/templates/settings.html",
             classes: ["sheet"],
             width: 500,
