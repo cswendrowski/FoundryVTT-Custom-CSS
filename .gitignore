@@ -1,1 +1,9 @@
-/codemirror
+codemirror/*
+codemirror/mode/*
+codemirror/mode/css/*
+
+!codemirror/lib
+
+!codemirror/mode
+!codemirror/mode/css
+!codemirror/mode/css/css.js
