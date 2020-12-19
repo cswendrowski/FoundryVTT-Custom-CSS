@@ -33,7 +33,7 @@ jobs:
         download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/custom-css.zip
 
     # Create a zip file with all files required by the module to add to the release
-    - run: zip -r ./custom-css.zip module.json custom-css.js settings.js settingsForm.js custom-css.css templates/ lang/ 
+    - run: zip -r ./custom-css.zip module.json custom-css.js settings.js settingsForm.js codemirror/lib/ codemirror/mode/css/css.js custom-css.css templates/ lang/ 
 
     # Create a release for this specific version
     - name: Update Release with Files
