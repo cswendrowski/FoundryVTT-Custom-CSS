@@ -40,6 +40,20 @@ export class SettingsForm extends FormApplication {
     }
 
     /**
+     * Handles retrieving data from the form.
+     *
+     * @override Save the code editor instance before retrieving data to ensure the data is synchronised. 
+     *
+     * @param {array} args - All arguments passed to this method, which will be forwarded to super
+     * @return {object} The form data 
+     * @memberof SettingsForm
+     */
+    _getSubmitData(...args) {
+        this.codeEditor.save();
+        return super._getSubmitData(...args);
+    }
+
+    /**
      * Executes on form submission.
      *
      * @param {Event} event - the form submission event
@@ -49,4 +63,27 @@ export class SettingsForm extends FormApplication {
     async _updateObject(event, data) {
         await Settings.updateStylesheet(data["stylesheet"]);
     }
+
+    /**
+     * Activates all event listeners related to this form.
+     *
+     * @override Activates the CodeMirror code editor.
+     *
+     * @param {JQuery} html - The html content of the form.
+     * @memberof SettingsForm
+     */
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        this.codeEditor = CodeMirror.fromTextArea(html.find(".stylesheet")[0], { 
+            mode: "css",
+            indentUnit: 4,
+            smartIndent: true,
+            indentWithTabs: true,
+            tabSize: 4,
+            lineNumbers: true,
+            inputStyle: "contenteditable",
+            autofocus: true
+        });
+    } 
 }
