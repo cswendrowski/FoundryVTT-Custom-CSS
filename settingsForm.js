@@ -16,10 +16,9 @@ export class SettingsForm extends FormApplication {
      * @memberof SettingsForm
      */
     static get defaultOptions() {
-        var me = this;
         return mergeObject(super.defaultOptions, {
             id: "customcss-settings-form",
-            title: "Custom CSS Rules",
+            title: game.i18n.localize("CCSS.settings.settingsForm.title"),
             template: "./modules/custom-css/templates/settings.html",
             classes: ["sheet"],
             width: 500,

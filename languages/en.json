@@ -5,7 +5,8 @@
             "CustomCssHint": "Make sure you validate your CSS and use !important",
             "settingsMenu": {
                 "name": "Custom CSS Rules",
-                "label": "Custom CSS Rules"
+                "label": "Custom CSS Rules",
+                "title": "Custom CSS Rules"
             }
         },
         "migration": {
