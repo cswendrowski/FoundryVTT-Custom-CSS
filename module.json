@@ -21,9 +21,14 @@
     "esmodules": [
         "./custom-css.js"
     ],
+    "scripts": [
+        "./codemirror/lib/codemirror.js",
+        "./codemirror/mode/css/css.js"
+    ],
     "socket": "true",
     "styles": [
-        "./custom-css.css"
+        "./custom-css.css",
+        "./codemirror/lib/codemirror.css"
     ],
     "languages": [
         {
