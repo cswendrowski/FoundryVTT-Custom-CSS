@@ -17,8 +17,9 @@ When adding a lot of modules, every now and then they don't quite agree with eac
 
 ## Changelog
 
+## v2.0.4
+
+Complete overhaul of functionality. Rules are replaced by one large styelsheet editor.
 ### v1.1.0
 
 Added the ability to organize Rules. This is *not* folder functionality!
-
-![](./reordering.gif)
