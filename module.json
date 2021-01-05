@@ -21,15 +21,17 @@
     "esmodules": [
         "./custom-css.js"
     ],
-    "scripts": [
-        "./codemirror/lib/codemirror.js",
-        "./codemirror/mode/css/css.js"
-    ],
     "socket": "true",
     "styles": [
-        "./custom-css.css",
-        "./codemirror/lib/codemirror.css"
+        "./custom-css.css"
     ],
+    "dependencies": [
+		{
+			"name": "_CodeMirror",
+			"type": "module",
+            "manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/codemirror-lib/master/module.json"	
+        }
+	],
     "languages": [
         {
             "lang": "en",

@@ -8,16 +8,8 @@
     margin-bottom: 8px;
     overflow: hidden;
 }
-
 .stylesheet-editor .CodeMirror {
-    	height: 100%;
-    	cursor: text;
-    	background: #ffffff33;
-    	box-shadow: 0 0 12px -6px #00000070 inset;
-}
-.stylesheet-editor .CodeMirror-gutters {
-    background-color: #c5c5c547;
-    box-shadow: 0 0 5px 0px #0000005c;
+    height: 100%;
 }
 .stylesheet {
     font-family: 'Courier New', Courier, monospace;

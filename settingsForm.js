@@ -76,10 +76,7 @@ export class SettingsForm extends FormApplication {
 
         this.codeEditor = CodeMirror.fromTextArea(html.find(".stylesheet")[0], { 
             mode: "css",
-            indentUnit: 4,
-            smartIndent: true,
-            indentWithTabs: true,
-            tabSize: 4,
+            ...CodeMirror.userSettings,
             lineNumbers: true,
             inputStyle: "contenteditable",
             autofocus: true
