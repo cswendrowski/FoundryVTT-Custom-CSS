@@ -2,7 +2,7 @@
     "name": "custom-css",
     "title": "Custom Css",
     "description": "Add custom css to your world",
-    "version": "100.2.0.4",
+    "version": "100.2.0.5",
     "minimumCoreVersion": "0.6.0",
     "compatibleCoreVersion": "0.7.9",
     "author": "zeel, Cody Swendrowski",
