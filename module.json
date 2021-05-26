@@ -2,7 +2,7 @@
     "name": "custom-css",
     "title": "Custom Css",
     "description": "Add custom css to your world",
-    "version": "100.2.0.5",
+    "version": "100.2.1.0",
     "minimumCoreVersion": "0.6.0",
     "compatibleCoreVersion": "0.8.9",
     "author": "zeel, Cody Swendrowski",
@@ -21,7 +21,7 @@
     "esmodules": [
         "./custom-css.js"
     ],
-    "socket": "true",
+    "socket": true,
     "styles": [
         "./custom-css.css"
     ],
