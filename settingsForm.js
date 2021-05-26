@@ -24,7 +24,8 @@ export class SettingsForm extends FormApplication {
             width: 500,
             height: 500,
             closeOnSubmit: false,
-            submitOnClose: true
+            submitOnClose: true,
+            resizable: true
         });
     }
 
