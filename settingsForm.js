@@ -80,7 +80,9 @@ export class SettingsForm extends FormApplication {
             ...CodeMirror.userSettings,
             lineNumbers: true,
             inputStyle: "contenteditable",
-            autofocus: true
+            autofocus: true,
+            spellcheck: true,
+            extraKeys: {"Ctrl-Space": "autocomplete"}
         });
     } 
 }
