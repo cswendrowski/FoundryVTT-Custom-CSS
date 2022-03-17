@@ -46,6 +46,17 @@ export class Settings {
     }
 
     /**
+     * Fetch the game setting for whether or not to do a transition animation.
+     *
+     * @readonly
+     * @static
+     * @memberof Settings
+     */
+    static get doTransition() {
+        return game.settings.get(mod, "transition");
+    }
+
+    /**
      * Registers all of the necessary game settings for the module
      *
      * @static
@@ -65,6 +76,15 @@ export class Settings {
             icon: "fas fa-wrench",
             type: SettingsForm,
             restricted: true
+        });
+
+        game.settings.register(mod, "transition", {
+            name: game.i18n.localize("CCSS.settings.transition.name"),
+            hint: game.i18n.localize("CCSS.settings.transition.hint"),
+            scope: "world",
+            config: true,
+            type: Boolean,
+            default: true
         });
 
         // For migration

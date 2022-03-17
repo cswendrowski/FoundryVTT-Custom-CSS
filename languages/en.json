@@ -7,6 +7,10 @@
                 "name": "Custom CSS Rules",
                 "label": "Custom CSS Rules",
                 "title": "Custom CSS Rules"
+            },
+            "transition": {
+                "name": "Transition",
+                "hint": "Whether or not to animate the style changes when they are saved."
             }
         },
         "migration": {

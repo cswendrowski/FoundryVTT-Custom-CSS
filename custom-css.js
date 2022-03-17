@@ -87,7 +87,7 @@ class CustomCSS {
      * @param {boolean} transition - Whether or not to animate the transition (normally true) 
      * @memberof CustomCSS
      */
-    async applyStyles(transition=true) {
+    async applyStyles(transition=Settings.doTransition) {
         let el;
         if (transition) {
             el = document.createElement("style");
