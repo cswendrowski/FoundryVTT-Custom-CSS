@@ -3,15 +3,30 @@
     flex-direction: column;
     height: 100%;
 }
-.stylesheet-editor {
+.customCssSettings h2 {
+    margin: .2em 0 0 0;
+    font-size: 1.25em;
+}
+.customCssSettings .notes {
+    flex-basis: unset;
+    padding: 0;
+}
+.customCssSettings .stylesheet-editor {
+    display: flex;
     flex-grow: 1;
-    margin-bottom: 8px;
+    flex-shrink: 0;
+    flex-basis: 250px;
     overflow: hidden;
 }
-.stylesheet-editor .CodeMirror {
+.customCssSettings .stylesheet-editor .CodeMirror {
     height: 100%;
+    width: 100%;
 }
-.stylesheet {
+.customCssSettings textarea {
     font-family: 'Courier New', Courier, monospace;
     height: 100%;
+    width: 100%;
+}
+.customCssSettings button {
+    margin-top: .5em;
 }

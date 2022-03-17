@@ -1,9 +1,23 @@
 <form autocomplete="off" class="customCssSettings" onsubmit="event.preventDefault()">
+{{#if isGM}}
+    <h2>{{localize "Global Styles"}}</h2>
+    <p class="notes">{{localize "These styles apply to all users"}}</p>
+    
     <section class="stylesheet-editor">
         <textarea name="stylesheet" class="stylesheet">
         {{~" "}}{{{stylesheet}}}{{" "~}}
         </textarea>
     </section>
+
+    <h2>{{localize "User Styles"}}</h2>
+    <p class="notes">{{localize "These styles apply only to you"}}</p>            
+{{/if}}
+    <section class="stylesheet-editor">
+        <textarea name="userStylesheet" class="userStylesheet">
+        {{~" "}}{{{userStylesheet}}}{{" "~}}
+        </textarea>
+    </section>
+
     <button type="submit" name="submit">
         <i class="fas fa-save"></i> Save
     </button>

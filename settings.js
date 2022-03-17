@@ -11,38 +11,75 @@ const mod = 'custom-css';
  */
 export class Settings {
     /**
-     * Retrieves the stylesheet data from settings.
+     * Retrieves the combined stylesheet data from settings.
      *
      * @static
      * @return {string} The CSS stored in the stylesheet setting.
      * @memberof Settings
      */
     static getStylesheet() {
+        return this.getWorldStylesheet() + "\n\n" + this.getUserStylesheet();
+    }
+    /**
+     * Retrieves the world stylesheet data from settings.
+     *
+     * @static
+     * @return {string} The CSS stored in the stylesheet setting.
+     * @memberof Settings
+     */
+    static getWorldStylesheet() {
         return game.settings.get(mod, "stylesheet");
     }
     /**
-     * Stores data in the stylesheet settings.
+     * Retrieves the user stylesheet data from settings.
+     *
+     * @static
+     * @return {string} The CSS stored in the stylesheet setting.
+     * @memberof Settings
+     */
+    static getUserStylesheet() {
+        return game.settings.get(mod, "userStylesheet");
+    }
+
+    /**
+     * Stores data in the world stylesheet settings.
      *
      * @static
      * @param {string} css - The new CSS to be stored
      * @return {Promise} A promise fulfilled once the setting has been stored. 
      * @memberof Settings
      */
-    static async setStylesheet(css) {
+    static async setWorldStylesheet(css) {
         return game.settings.set(mod, "stylesheet", css);
+    }
+    /**
+     * Stores data in the user stylesheet settings.
+     *
+     * @static
+     * @param {string} css - The new CSS to be stored
+     * @return {Promise} A promise fulfilled once the setting has been stored. 
+     * @memberof Settings
+     */
+    static async setUserStylesheet(css) {
+        return game.settings.set(mod, "userStylesheet", css);
     }
 
     /**
      * Saves new stylesheet data, then reapplies the styles.
      *
      * @static
-     * @param {string} css - The new CSS to be updated.
+     * @param {string} worldCss - The new CSS to be updated for the world.
+     * @param {string} userCss - The new CSS to be updated for the user.
      * @memberof Settings
      */
-    static async updateStylesheet(css) {
-        await this.setStylesheet(css);
+    static async updateStylesheets(worldCss, userCss) {
+        if (game.user.isGM) 
+            await this.setWorldStylesheet(worldCss);
+        await this.setUserStylesheet(userCss);
+
         window.CustomCss.applyStyles();
-        game.socket.emit("module.custom-css");
+
+        if (game.user.isGM) game.socket.emit("module.custom-css");
     }
 
     /**
@@ -70,18 +107,25 @@ export class Settings {
             default: "/* Custom CSS */"
         });
 
+        game.settings.register(mod, "userStylesheet", {
+            scope: "client",
+            config: false,
+            type: String,
+            default: "/* Custom CSS */"
+        });
+
         game.settings.registerMenu(mod, 'settingsMenu', {
             name: game.i18n.localize("CCSS.settings.settingsMenu.name"),
             label: game.i18n.localize("CCSS.settings.settingsMenu.label"),
             icon: "fas fa-wrench",
             type: SettingsForm,
-            restricted: true
+            restricted: false
         });
 
         game.settings.register(mod, "transition", {
             name: game.i18n.localize("CCSS.settings.transition.name"),
             hint: game.i18n.localize("CCSS.settings.transition.hint"),
-            scope: "world",
+            scope: "client",
             config: true,
             type: Boolean,
             default: true
@@ -127,7 +171,7 @@ export class Settings {
         Hooks.once("ready", () => ui.notifications.notify(game.i18n.localize("CCSS.migration.uiMessage")));
 
         let oldCSS = this.compileOldRules();
-        await this.setStylesheet(this.getStylesheet() + oldCSS);
+        await this.setWorldStylesheet(this.getWorldStylesheet() + oldCSS);
 
         await game.settings.set(mod, "numberOfRules", 0);
 

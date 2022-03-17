@@ -22,12 +22,14 @@ export class SettingsForm extends FormApplication {
             template: "./modules/custom-css/templates/settings.html",
             classes: ["sheet"],
             width: 500,
-            height: 500,
+            height: game.user.isGM ? 900 : 500,
             closeOnSubmit: false,
             submitOnClose: true,
             resizable: true
         });
     }
+
+    codeEditors = [];
 
     /**
      * Construct an object of data to be passed to this froms HTML template.
@@ -36,7 +38,11 @@ export class SettingsForm extends FormApplication {
      * @memberof SettingsForm
      */
     getData() {
-        return { stylesheet: Settings.getStylesheet() };
+        return {
+            isGM: game.user.isGM,
+            stylesheet: Settings.getWorldStylesheet(),
+            userStylesheet: Settings.getUserStylesheet() 
+        };
     }
 
     /**
@@ -49,7 +55,7 @@ export class SettingsForm extends FormApplication {
      * @memberof SettingsForm
      */
     _getSubmitData(...args) {
-        this.codeEditor.save();
+        this.codeEditors.forEach(editor => editor.save());
         return super._getSubmitData(...args);
     }
 
@@ -61,7 +67,7 @@ export class SettingsForm extends FormApplication {
      * @memberof SettingsForm
      */
     async _updateObject(event, data) {
-        await Settings.updateStylesheet(data["stylesheet"]);
+        await Settings.updateStylesheets(data["stylesheet"], data["userStylesheet"]);
     }
 
     /**
@@ -75,12 +81,17 @@ export class SettingsForm extends FormApplication {
     activateListeners(html) {
         super.activateListeners(html);
 
-        this.codeEditor = CodeMirror.fromTextArea(html.find(".stylesheet")[0], { 
+        const options = { 
             mode: "css",
             ...CodeMirror.userSettings,
             lineNumbers: true,
             inputStyle: "contenteditable",
             autofocus: true
-        });
+        }
+
+        if (game.user.isGM)
+            this.codeEditors.push(CodeMirror.fromTextArea(html.find(".stylesheet")[0], options));
+
+        this.codeEditors.push(CodeMirror.fromTextArea(html.find(".userStylesheet")[0], options));
     } 
 }

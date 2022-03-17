@@ -110,7 +110,7 @@ class CustomCSS {
      */
     openSocket() {
         Hooks.once("ready", () => 
-            game.socket.on("module.custom-css", this.applyStyles.bind(this))
+            game.socket.on("module.custom-css", () => this.applyStyles())
         );
     }
 }
