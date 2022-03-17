@@ -64,7 +64,7 @@ class CustomCSS {
         this.openSocket();
 
         this.createStyleElement();
-        this.applyStyles();
+        await this.applyStyles(false);
         console.log(this.css);
     }
 
@@ -84,10 +84,23 @@ class CustomCSS {
      * Inject the stylesheet data stored in settings
      * into the <style> element.
      *
+     * @param {boolean} transition - Whether or not to animate the transition (normally true) 
      * @memberof CustomCSS
      */
-    applyStyles() {
+    async applyStyles(transition=true) {
+        let el;
+        if (transition) {
+            el = document.createElement("style");
+            el.innerHTML = "* { transition: .75s; };";
+            document.querySelector("head").appendChild(el);
+        }
+
         this.css = Settings.getStylesheet();
+
+        if (transition) {
+            await new Promise(resolve => setTimeout(resolve, 750));
+            el.remove();
+        }
     }
 
     /**
