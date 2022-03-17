@@ -1,7 +1,7 @@
 {
     "name": "custom-css",
-    "title": "Custom Css",
-    "description": "Add custom css to your world",
+    "title": "Custom CSS",
+    "description": "Add custom CSS to your world",
     "version": "2.2.0",
     "minimumCoreVersion": "0.6.0",
     "compatibleCoreVersion": "9",
