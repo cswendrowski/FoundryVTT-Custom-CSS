@@ -1,11 +1,15 @@
 {
     "name": "custom-css",
+    "id": "custom-css",
     "title": "Custom CSS",
     "description": "Add custom CSS to your world",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "minimumCoreVersion": "0.6.0",
     "compatibleCoreVersion": "9",
-    "author": "zeel, Cody Swendrowski",
+    "compatibility": {
+        "minimum": "0.6.0",
+        "verified": 10
+    },
     "authors": [
 		{
 			"name": "zeel",
@@ -32,6 +36,13 @@
             "manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/codemirror-lib/master/module.json"	
         }
 	],
+    "relationships": {
+        "requires": {
+            "id": "_CodeMirror",
+            "type": "module",
+            "manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/codemirror-lib/master/module.json"
+        }
+    },
     "languages": [
         {
             "lang": "en",
@@ -41,7 +52,7 @@
     ],
     "manifest": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases/latest/download/module.json",
 	"url": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS",
-	"download": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases/latest/download/artbutton.zip",
+	"download": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases/latest/download/custom-css.zip",
     "readme": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/blob/master/readme.md",
 	"bugs": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/issues",
 	"changelog": "https://github.com/cswendrowski/FoundryVTT-Custom-CSS/releases",
