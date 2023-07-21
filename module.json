@@ -37,11 +37,13 @@
         }
 	],
     "relationships": {
-        "requires": {
-            "id": "_CodeMirror",
-            "type": "module",
-            "manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/codemirror-lib/master/module.json"
-        }
+        "requires": [
+            {
+                "id": "_CodeMirror",
+                "type": "module",
+                "manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/codemirror-lib/master/module.json"
+            }
+        ]
     },
     "languages": [
         {
