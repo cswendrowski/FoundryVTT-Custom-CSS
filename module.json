@@ -1,14 +1,11 @@
 {
-    "name": "custom-css",
     "id": "custom-css",
     "title": "Custom CSS",
     "description": "Add custom CSS to your world",
-    "version": "2.2.1",
-    "minimumCoreVersion": "0.6.0",
-    "compatibleCoreVersion": "9",
+    "version": "2.2.2",
     "compatibility": {
-        "minimum": "0.6.0",
-        "verified": 10
+        "minimum": 10,
+        "verified": 11
     },
     "authors": [
 		{
@@ -31,11 +28,11 @@
     ],
     "relationships": {
         "requires": [
-  	    {
+            {
                 "id": "_CodeMirror",
                 "type": "module"
             }
-	]
+	    ]
     },
     "languages": [
         {
